@@ -1,0 +1,21 @@
+html {
+  font-family: 'Lato', sans-serif;
+  width: 80%;
+}
+
+body {
+  margin: 5%;
+  background-color: #F4FBFD
+}
+
+.card {
+  width: 50%;
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,.3),0 1px 3px 1px rgba(60,64,67,.15);
+  border-radius: 5px;
+  background-color: #FFFFFF;
+}
+
+.card-title {
+  padding: 1em;
+
+}
