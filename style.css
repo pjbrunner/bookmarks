@@ -67,6 +67,15 @@ a:hover .card {
   color: #FFFFFF;
 }
 
+.tag2 {
+  padding: 4px;
+  border-radius: 3px;
+  background-color: #49FFC8;
+  color: #FFFFFF;
+  text-align: center;
+  margin: auto;
+}
+
 .mdn-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
@@ -74,7 +83,8 @@ a:hover .card {
 }
 
 .mdn-card {
+  border-radius: 3px;
   display: grid;
-  grid-template-rows: max-content 200px 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   background-color: #DEDEDE;
 }
