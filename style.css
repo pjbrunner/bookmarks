@@ -88,3 +88,7 @@ a:hover .card {
   grid-template-rows: 1fr 1fr 1fr;
   background-color: #DEDEDE;
 }
+
+.mdn-tags {
+  display: flex;
+}
