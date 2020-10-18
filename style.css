@@ -30,11 +30,15 @@ body {
 }
 
 .gradient-title {
-  background: linear-gradient(45deg, #4FCF5E,#F9FF47, #FFC847, transparent);
+  background: linear-gradient(45deg, #4FCF5E,#F9FF47, #FFC847);
   background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   margin-left: 7px;
+}
+
+.card-desc {
+  margin: 0 7px 0 7px;
 }
 
 .tags {
@@ -58,6 +62,17 @@ button.tag {
 }
 
 button:hover.tag {
-  color: #1A1A1A;
-  background-color: #00dba4;
+  color: #FFFFFF;
+}
+
+@media (max-width: 800px) {
+  .card {
+    width: 46%;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 100%;
+  }
 }
