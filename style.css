@@ -16,10 +16,10 @@ body {
 
 .card {
   margin-top: 10px;
-  background-color: #DEDEDE;
   width: 30%;
   background: #FFFFFF;
   border: 5px solid;
+  /* border-image-source: linear-gradient(45deg, #0A81FF, #F91F4b, #8400BD); */
   border-image-source: linear-gradient(45deg, #4FCF5E,#F9FF47, #FFC847);
   border-image-slice: 1;
 }
@@ -45,10 +45,11 @@ body {
   display: flex;
   flex-flow: row wrap;
   background-color: #242424;
+  padding-bottom: 7px;
 }
 
 .tag {
-  margin: 7px 10px 7px 0;
+  margin: 7px 10px 0 0;
   border: none;
   border-radius: 3px;
   background: linear-gradient(45deg, #4FCF5E,#F9FF47, #FFC847);
@@ -65,14 +66,30 @@ button:hover.tag {
   color: #FFFFFF;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .card {
-    width: 46%;
+    width: 47%;
+  }
+
+  .tags {
+    padding-bottom: 5px;
+  }
+
+  .tag {
+    margin: 5px 0 0 0;
   }
 }
 
 @media (max-width: 600px) {
   .card {
     width: 100%;
+  }
+
+  .tags {
+    padding-bottom: 4px;
+  }
+
+  .tag {
+    margin: 4px 0 0 0;
   }
 }
