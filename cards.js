@@ -1,8 +1,37 @@
+'use strict';
+
+const links = {
+    "wikipedia": {
+        "url": "https://wikipedia.org",
+        "description": "Ad free wiki created by volunteers that I should probably fact check more.",
+        "tags": ["Wiki", "Free"]
+    },
+    "Mozilla Developer Network (MDN)": {
+        "url": "https://developer.mozilla.org/en-US/",
+        "description": "Free web development knowledge base by Mozilla, maintained by volunteers.",
+        "tags": ["Wiki", "Free", "Web development"]
+    } 
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelector('.cards');
-    let url = "file:///Users/pj/coding/bookmarks/links.json";
-    let request = new XMLHttpRequest();
-    request.open('GET', url);
-    request.responseType = 'json';
-    request.send()
+
+    function createCards() {
+        for(let key in links) {
+            let card = document.createElement('div');
+            card.classList.add('card');
+            let titleBox = document.createElement('div')
+            titleBox.classList.add('title-box');
+            let title = document.createElement('h3');
+            title.classList.add('gradient-title');
+            title.innerHTML.valueOf('Test title');
+
+            titleBox.appendChild(title);
+            card.appendChild(titleBox);
+            cards.appendChild(card);
+
+        }
+    }
+
+    createCards();
 });
