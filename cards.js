@@ -1,7 +1,7 @@
 'use strict';
 
 const links = {
-    "wikipedia": {
+    "Wikipedia": {
         "url": "https://wikipedia.org",
         "description": "Ad free wiki created by volunteers that I should probably fact check more.",
         "tags": ["Wiki", "Free"]
@@ -16,22 +16,36 @@ const links = {
 document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelector('.cards');
 
-    function createCards() {
-        for(let key in links) {
-            let card = document.createElement('div');
-            card.classList.add('card');
-            let titleBox = document.createElement('div')
-            titleBox.classList.add('title-box');
-            let title = document.createElement('h3');
-            title.classList.add('gradient-title');
-            title.innerHTML.valueOf('Test title');
+    class Bookmarks {
+        constructor(cards) {
+            this.cards = cards;
+        };
 
-            titleBox.appendChild(title);
-            card.appendChild(titleBox);
-            cards.appendChild(card);
+        createCards() {
+            for(let key in links) {
+                this.createCard(key);
+            }
+        }
 
+        createCard(name) {
+                let card = document.createElement('div');
+                card.classList.add('card');
+                let titleBox = document.createElement('div')
+                titleBox.classList.add('title-box');
+                let title = document.createElement('h3');
+                title.classList.add('gradient-title');
+                title.innerText = name;
+                let cardDesc = document.createElement('div');
+                cardDesc.classList.add('card-desc');
+                cardDesc.innerText = links[name].description;
+
+                titleBox.appendChild(title);
+                card.appendChild(titleBox);
+                card.appendChild(cardDesc);
+                this.cards.appendChild(card);
         }
     }
 
-    createCards();
+    const bookmarks = new Bookmarks(cards);
+    bookmarks.createCards();
 });
