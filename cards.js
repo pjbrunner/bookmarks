@@ -48,6 +48,16 @@ document.addEventListener('DOMContentLoaded', () => {
             this.cardDescDiv = document.createElement('div');
             this.cardDescDiv.classList.add('card-desc');
             this.cardDescDiv.innerText = this.description;
+            this.tagsDiv = document.createElement('div');
+            this.tagsDiv.classList.add('tags');
+            this.tagButtons = [];
+            this.tags.forEach(tag => {
+                let tagButton = document.createElement('button');
+                tagButton.classList.add('tag');
+                tagButton.innerText = tag;
+                this.tagButtons.push(tagButton);
+                this.tagsDiv.appendChild(tagButton);
+            });
 
             this.constructCard();
         }
@@ -60,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.titleBoxDiv.appendChild(this.titleDiv);
             this.cardDiv.appendChild(this.titleBoxDiv);
             this.cardDiv.appendChild(this.cardDescDiv);
+            this.cardDiv.appendChild(this.tagsDiv);
         }
     }
 
