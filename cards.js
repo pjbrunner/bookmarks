@@ -10,7 +10,12 @@ const links = {
         "url": "https://developer.mozilla.org/en-US/",
         "description": "Free web development knowledge base by Mozilla, maintained by volunteers.",
         "tags": ["Wiki", "Free", "Web development"]
-    } 
+    },
+    "GameFAQs": {
+        "url": "https://gamefaqs.com",
+        "description": "Where to find game cheats and secrets without watching a 10 minutes YouTube video where the video starts out with 'Hey guys'.",
+        "tags": ["Free", "Gaming"]
+    },
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.cardsDiv = cardsDiv;
         }
 
-        createCards() {
+        initialCreateCards() {
             for(let key in links) {
                 let card = new Card(key, links[key].url, links[key].description, links[key].tags);
                 this.cardsDiv.appendChild(card.getCardDiv())
@@ -38,13 +43,16 @@ document.addEventListener('DOMContentLoaded', () => {
             this.description = description;
             this.tags = tags;
 
-            this.cardDiv = document.createElement('div');
+            this.cardDiv = document.createElement('article');
             this.cardDiv.classList.add('card');
             this.titleBoxDiv = document.createElement('div')
             this.titleBoxDiv.classList.add('title-box');
             this.titleDiv = document.createElement('h3');
             this.titleDiv.classList.add('gradient-title');
-            this.titleDiv.innerText = this.title;
+            this.titleLink = document.createElement('a');
+            this.titleLink.innerText = this.title;
+            this.titleLink.href = this.url;
+            this.titleLink.target = '_blank';
             this.cardDescDiv = document.createElement('div');
             this.cardDescDiv.classList.add('card-desc');
             this.cardDescDiv.innerText = this.description;
@@ -67,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         constructCard() {
+            this.titleDiv.appendChild(this.titleLink);
             this.titleBoxDiv.appendChild(this.titleDiv);
             this.cardDiv.appendChild(this.titleBoxDiv);
             this.cardDiv.appendChild(this.cardDescDiv);
@@ -75,5 +84,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const bookmarks = new Bookmarks(cardsDiv);
-    bookmarks.createCards();
+    bookmarks.initialCreateCards();
 });
