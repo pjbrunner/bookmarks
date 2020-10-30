@@ -21,7 +21,7 @@ const links = {
 document.addEventListener('DOMContentLoaded', () => {
     const cardsDiv = document.querySelector('.cards');
 
-    class Bookmarks {
+    class Cards {
         constructor(cardsDiv) {
             this.cards = [];
             this.cardsDiv = cardsDiv;
@@ -74,6 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
             return this.cardDiv;
         }
 
+        hide() {
+            this.cardDiv.classList.add('hide');
+        }
+
+        unhide() {
+            this.cardDiv.classList.remove('hide');
+        }
+
         constructCard() {
             this.titleDiv.appendChild(this.titleLink);
             this.titleBoxDiv.appendChild(this.titleDiv);
@@ -83,6 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const bookmarks = new Bookmarks(cardsDiv);
-    bookmarks.initialCreateCards();
+    const cards = new Cards(cardsDiv);
+    cards.initialCreateCards();
 });
