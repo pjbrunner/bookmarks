@@ -6,6 +6,10 @@ body {
   background-color: #1F262E
 }
 
+.hide {
+  display: none;
+}
+
 .cards {
   display: flex;
   flex-flow: row wrap;
