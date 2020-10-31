@@ -16,6 +16,11 @@ const links = {
         "description": "Where to find game cheats and secrets without watching a 10 minutes YouTube video where the video starts out with 'Hey guys'.",
         "tags": ["Free", "Gaming"]
     },
+    "Python Documentation": {
+        "url": "https://docs.python.org/3",
+        "description": "Python 3 documentation.",
+        "tags": ["Free", "Coding"]
+    },
 }
 
 document.addEventListener('DOMContentLoaded', () => {
