@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         constructor(cardsDiv) {
             this.cards = [];
             this.cardsDiv = cardsDiv;
+            this.uniqueTags = [];
         }
 
         initialCreateCards() {
@@ -37,7 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 let card = new Card(key, links[key].url, links[key].description, links[key].tags);
                 this.cardsDiv.appendChild(card.getCardDiv())
                 this.cards.push(card);
+                this.uniqueTags = this.uniqueTags.concat(links[key].tags);
             }
+            // Get duplicate entries out by turning into tags into Set then back into an Array.
+            let tagsSet = new Set(this.uniqueTags);
+            this.uniqueTags = Array.from(tagsSet);
         }
     }
 
