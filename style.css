@@ -70,6 +70,30 @@ button:hover.tag {
   color: #FFFFFF;
 }
 
+.tag-section {
+  border-bottom: 5px solid;
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
+
+.arrow {
+  border: 5px solid;
+  border-width: 0 3px 3px 0;
+  border-color: #FFFFFF;
+  display: inline-block;
+  padding: 3px;
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: (45deg);
+}
+
 @media (max-width: 900px) {
   .card {
     width: 47%;
