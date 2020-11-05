@@ -31,19 +31,30 @@ document.addEventListener('DOMContentLoaded', () => {
             this.cards = [];
             this.cardsDiv = cardsDiv;
             this.uniqueTags = [];
+            this.sortedLinks = this.alphabeticalSort();
+        }
+        
+        alphabeticalSort() {
+            let sortedLinks = [];
+            for(let [key, _] of Object.entries(links)) {
+                sortedLinks.push(key)
+            }
+            sortedLinks = sortedLinks.sort();
+            return sortedLinks;
         }
 
         initialCreateCards() {
-            for(let key in links) {
-                let card = new Card(key, links[key].url, links[key].description, links[key].tags);
+            for(let link of this.sortedLinks) {
+                let card = new Card(link, links[link].url, links[link].description, links[link].tags);
                 this.cardsDiv.appendChild(card.getCardDiv())
                 this.cards.push(card);
-                this.uniqueTags = this.uniqueTags.concat(links[key].tags);
+                this.uniqueTags = this.uniqueTags.concat(links[link].tags);
             }
             // Get duplicate entries out by turning into tags into Set then back into an Array.
             let tagsSet = new Set(this.uniqueTags);
             this.uniqueTags = Array.from(tagsSet);
         }
+
     }
 
     class Card {
