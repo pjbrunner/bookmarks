@@ -43,16 +43,27 @@ document.addEventListener('DOMContentLoaded', () => {
             return sortedLinks;
         }
 
-        initialCreateCards() {
-            for(let link of this.sortedLinks) {
+        generateCardsAlphabetically(reverse=false, getUniqueTags=false) {
+            let sortedLinks;
+            reverse ? sortedLinks = this.sortedLinks.reverse() : sortedLinks = this.sortedLinks;
+
+            for(let link of sortedLinks) {
                 let card = new Card(link, links[link].url, links[link].description, links[link].tags);
                 this.cardsDiv.appendChild(card.getCardDiv())
                 this.cards.push(card);
-                this.uniqueTags = this.uniqueTags.concat(links[link].tags);
+                if(getUniqueTags) this.uniqueTags = this.uniqueTags.concat(links[link].tags);
             }
-            // Get duplicate entries out by turning into tags into Set then back into an Array.
-            let tagsSet = new Set(this.uniqueTags);
-            this.uniqueTags = Array.from(tagsSet);
+            if(getUniqueTags) {
+                // Get duplicate entries out by turning into tags into Set then back into an Array.
+                let tagsSet = new Set(this.uniqueTags);
+                this.uniqueTags = Array.from(tagsSet);
+            }
+        }
+
+        eraseAllCards() {
+            for(let card of this.cards) {
+                card.cardDiv.remove();
+            }
         }
 
     }
@@ -113,5 +124,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const cards = new Cards(cardsDiv);
-    cards.initialCreateCards();
+    cards.generateCardsAlphabetically(false, true);
 });
