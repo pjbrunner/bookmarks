@@ -21,6 +21,11 @@ const links = {
         "description": "Python 3 documentation.",
         "tags": ["Free", "Coding"]
     },
+    "Wolfram Alpha": {
+        "url": "https://www.wolframalpha.com/",
+        "description": "Math engine, life engine, for a computer it can answer a lot of difficult question.",
+        "tags": ["Search engine", "Math"]
+    },
 }
 
 document.addEventListener('DOMContentLoaded', () => {
