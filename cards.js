@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.cardsDiv = cardsDiv;
             this.uniqueTags = [];
             this.sortedLinks = this.alphabeticalSort();
+            this.tagDictionary = {};
         }
         
         alphabeticalSort() {
@@ -62,7 +63,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Get duplicate entries out by turning into tags into Set then back into an Array.
                 let tagsSet = new Set(this.uniqueTags);
                 this.uniqueTags = Array.from(tagsSet);
+                this.uniqueTags = this.uniqueTags.sort();
             }
+        }
+
+        createCategoryGroups() {
+            this.createTagDictionary();
+            for(let card of this.cards) {
+                for(let [key, _] of Object.entries(this.tagDictionary)) {
+                    if(card.tags.includes(key)) this.tagDictionary[key].push(card.createCopy());
+                }
+            }
+        }
+
+        createTagDictionary() {
+            this.uniqueTags.forEach(tag => {
+                this.tagDictionary[tag] = [];
+            });
         }
 
         eraseAllCards() {
@@ -70,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.cardDiv.remove();
             }
         }
-
     }
 
     class Card {
@@ -80,6 +96,26 @@ document.addEventListener('DOMContentLoaded', () => {
             this.description = description;
             this.tags = tags;
 
+            this.constructCard();
+        }
+
+        getCardDiv() {
+            return this.cardDiv;
+        }
+
+        createCopy() {
+            return new Card(this.title, this.url, this.description, this.tags);
+        }
+
+        hide() {
+            this.cardDiv.classList.add('hide');
+        }
+
+        unhide() {
+            this.cardDiv.classList.remove('hide');
+        }
+
+        createElements() {
             this.cardDiv = document.createElement('article');
             this.cardDiv.classList.add('card');
             this.titleBoxDiv = document.createElement('div')
@@ -103,23 +139,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.tagButtons.push(tagButton);
                 this.tagsDiv.appendChild(tagButton);
             });
-
-            this.constructCard();
-        }
-
-        getCardDiv() {
-            return this.cardDiv;
-        }
-
-        hide() {
-            this.cardDiv.classList.add('hide');
-        }
-
-        unhide() {
-            this.cardDiv.classList.remove('hide');
         }
 
         constructCard() {
+            this.createElements();
             this.titleDiv.appendChild(this.titleLink);
             this.titleBoxDiv.appendChild(this.titleDiv);
             this.cardDiv.appendChild(this.titleBoxDiv);
@@ -130,4 +153,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const cards = new Cards(cardsDiv);
     cards.generateCardsAlphabetically(false, true);
+    cards.createCategoryGroups();
 });
