@@ -28,6 +28,9 @@ const links = {
     },
 }
 
+function listButtons() {
+    console.log('Button pressed')
+}
 document.addEventListener('DOMContentLoaded', () => {
     const cardsDiv = document.querySelector('.cards');
 
@@ -150,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.cardDiv.appendChild(this.tagsDiv);
         }
     }
+
 
     const cards = new Cards(cardsDiv);
     cards.generateCardsAlphabetically(false, true);
