@@ -92,7 +92,7 @@ class Cards {
     }
 
     categoriesButtonPressed() {
-        this.listButtonPressed();
+        console.log('Categories')
     }
 }
 
