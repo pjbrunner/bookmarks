@@ -35,7 +35,12 @@ const links = {
         "url": "https://open.spotify.com/browse/featured",
         "description": "Listen to music",
         "tags": ["Productivity"]
-    }
+    },
+    "The Markup Blacklight": {
+        "url": "https://themarkup.org/blacklight",
+        "description": "See how websites are tracking you.",
+        "tags": ["Privacy", "News"]
+    },
 }
 
 class Cards {
