@@ -30,6 +30,11 @@ const links = {
         "url": "https://tutanota.com",
         "description": "Secure email",
         "tags": ["Email", "Free"]
+    },
+    "Spotify": {
+        "url": "https://open.spotify.com/browse/featured",
+        "description": "Listen to music",
+        "tags": ["Productivity"]
     }
 }
 
