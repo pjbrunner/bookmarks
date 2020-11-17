@@ -173,6 +173,8 @@ class Card {
     }
 }
 
+const cards = [];
+
 document.addEventListener('DOMContentLoaded', () => {
     const cardsDiv = document.querySelector('.cards');
 
